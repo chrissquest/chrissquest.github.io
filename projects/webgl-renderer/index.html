@@ -151,8 +151,30 @@
   <div class="row">
     <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 pt-4">
       <article role="main" class="blog-post">
-        <p>Work in progress !</p>
-<p><a href="../../web_projects/webGL">Link to demo</a></p>
+        <p>Work in progress</p>
+<p><a href="/web_projects/webGL">Link to demo</a></p>
+<p>So I&rsquo;m testing out embedding the webGL canvas into these posts, but unfortunately due to how this website handles its dark mode, there&rsquo;s essentially a filter over the whole thing that makes it dark mode, and images/videos/canvases are double inverted and hue flipped. This might work if the inversion/flip was perfect but there is a ton of saturation lost in the conversion using the default css filters so the effect is a washed out image. I don&rsquo;t really mind it that much, so if you want to see the true colors, just see the demo above.</p>
+<p>This is more to showcase progress on the renderer as I work on it.</p>
+<!-- 
+<canvas id='glCanvas' width="640px" height="480px"></canvas>
+<script language="javascript" src="/web_projects/webGL/lib/gl-matrix.js"></script>
+<script language="javascript" src="/web_projects/webGL/math.js"></script>
+<script language="javascript" src="/web_projects/webGL/shaders.js"></script>
+<script language="javascript" src="/web_projects/webGL/initGL.js"></script>
+<script language="javascript" src="/web_projects/webGL/input.js"></script>
+<script language="javascript" src="/web_projects/webGL/model.js"></script>
+<script language="javascript" src="/web_projects/webGL/main.js"></script>
+<script language="javascript" src="/web_projects/webGL/triangledraw.js"></script>
+<script language="javascript" src="/web_projects/webGL/assets.js"></script>
+<script language="javascript" src="/web_projects/webGL/camera.js"></script>
+-->
+<!-- I think an iframe is better actually, although it's still worth making the code more portable -->
+<!-- width and height are set to what they will be after the scale transform -->
+<div style="width: 768px; height: 432px; padding: 0; overflow: hidden;">
+    <iframe src="/web_projects/webGL/" style="width: 1280px; height: 720px; transform: scale(0.6); transform-origin: 0 0" ></iframe>
+</div>
+<p>Use WASD to move, Arrow Keys to look around (no mobile controls yet sorry).<br>
+Right now this embed simply mirrors the demo, but I could probably set up multiple unique scenes to showcase more and more complex models/ scenes and their respective code snippets.</p>
 
       </article>
     </div>

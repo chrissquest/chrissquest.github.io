@@ -1,5 +1,9 @@
 /* --- Code blocks --- */
 
+.highlight pre {
+  background-color: rgb(255, 255, 255) !important;
+}
+
 .chroma .ln {
   margin-right: 0.8em;
   padding: 0 0.4em 0 0.4em;

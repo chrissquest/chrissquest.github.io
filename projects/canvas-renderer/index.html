@@ -151,12 +151,25 @@
   <div class="row">
     <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 pt-4">
       <article role="main" class="blog-post">
-        <p>A simple model renderer inefficiently built on canvas line drawing</p>
-<p><a href="../../web_projects/canvasRenderer">Link to demo</a><br>
-<!-- raw HTML omitted --><br>
-<!-- raw HTML omitted --></p>
+        <p>A simple model renderer inefficiently built on canvas line drawing.</p>
+<p><a href="/web_projects/canvasRenderer">Link to demo</a><br>
+<br><br>
+<br></p>
 <h3 id="info">Info</h3>
-<p>So first of all, this is really not the right way to draw things, webgl exists, and I actually have another project <a href="../webgl-renderer">here</a></p>
+<p>So first of all, this is really not the right way to draw things, webgl exists, and I actually have another project <a href="/projects/webgl-renderer">here</a>.<br>
+But this is dear to my heart because it was an old project I attempted back in highschool and it really almost worked in so many ways. It was at the time the closest I could get to truly coding something from scratch, even if I didn&rsquo;t realize at the time that canvas was anywhere near low level graphics. But nevertheless I learned a LOT about graphics programming on my hunt for visualizing 3D cubes (I should eventually link even older prototypes I have which are even jankier).</p>
+<p>This is an updated version of that initial project, with the same&hellip; mechanics for 3d rendering but everything surrounding it cleaned up much nicer. The webgl has even more modern patterns but this already is way cleaner in my opinion.</p>
+<p>So for how it works, essentially this is rendering isometric and drawing full triangles ordered by the centroid&hellip; there is no depth buffer or anything, two triangles cannot intersect. This surprisingly works pretty well given that massive limitation, concave low polly shapes struggle the most from this, but with small enough polys the centroid is a pretty good estimate for depth and you just get some visual artifacting around the edges while rotating.</p>
+<p>Because this is isometric, we can skip most of the projection and matrix math that would normally be done for 3D affairs and just use the x and y values:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#2838b0">const</span> x1 <span style="color:#666">=</span> <span style="color:#888">(</span>v1<span style="color:#888">.</span>x <span style="color:#666">*</span> S<span style="color:#888">)</span> <span style="color:#666">+</span> transform<span style="color:#888">.</span>x<span style="color:#888">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#2838b0">const</span> y1 <span style="color:#666">=</span> <span style="color:#888">(</span>v1<span style="color:#888">.</span>y <span style="color:#666">*</span> S<span style="color:#888">)</span> <span style="color:#666">+</span> transform<span style="color:#888">.</span>y<span style="color:#888">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#2838b0">const</span> x2 <span style="color:#666">=</span> <span style="color:#888">(</span>v2<span style="color:#888">.</span>x <span style="color:#666">*</span> S<span style="color:#888">)</span> <span style="color:#666">+</span> transform<span style="color:#888">.</span>x<span style="color:#888">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#2838b0">const</span> y2 <span style="color:#666">=</span> <span style="color:#888">(</span>v2<span style="color:#888">.</span>y <span style="color:#666">*</span> S<span style="color:#888">)</span> <span style="color:#666">+</span> transform<span style="color:#888">.</span>y<span style="color:#888">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#2838b0">const</span> x3 <span style="color:#666">=</span> <span style="color:#888">(</span>v3<span style="color:#888">.</span>x <span style="color:#666">*</span> S<span style="color:#888">)</span> <span style="color:#666">+</span> transform<span style="color:#888">.</span>x<span style="color:#888">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#2838b0">const</span> y3 <span style="color:#666">=</span> <span style="color:#888">(</span>v3<span style="color:#888">.</span>y <span style="color:#666">*</span> S<span style="color:#888">)</span> <span style="color:#666">+</span> transform<span style="color:#888">.</span>y<span style="color:#888">;</span>
+</span></span><span style="display:flex;"><span>drawTriangle<span style="color:#888">(</span>x1<span style="color:#888">,</span> y1<span style="color:#888">,</span> x2<span style="color:#888">,</span> y2<span style="color:#888">,</span> x3<span style="color:#888">,</span> y3<span style="color:#888">,</span> shaded_color<span style="color:#888">);</span>
+</span></span></code></pre></div><p>Here I was applying some scaling and translation, although I would write this differently even now looking back at it.</p>
+<p>Maybe I&rsquo;ll write more details some other time but that&rsquo;s all I got on my mind for now.</p>
 
       </article>
     </div>

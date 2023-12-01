@@ -1,7 +1,6 @@
 // Load model files
-// Load from this link so it can work locally w/out CORS error, works online too, but can be replaced with local paths, not big enough of a concern to matter
-//const source_link = "https://raw.githubusercontent.com/garstka1245/garstka1245.github.io/master/projects/webGL/models/";
-const source_link = "./models/";
+//const source_link = "./models/";
+const source_link = "/web_projects/webGL/models/";
 const model_names = [
 "basic/tetrahedron.obj",
 "basic/cube.obj",
